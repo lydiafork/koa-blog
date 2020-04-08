@@ -1,0 +1,22 @@
+version: '3'
+services:
+    web:
+        build: 
+            context: .
+            dockerfile: Dockerfile
+        # 覆盖容器启动后默认执行的命令。
+        command: 'node index.js'
+        # 解决容器的依赖、启动先后的问题
+        depends_on:
+            - ${MYSQL_HOST}
+        ports:
+            - "3000:3000"
+        env_file:
+            - ./.env
+    db:
+        build: ./db
+        ports:
+            - "3306:3306"
+        # 从文件中获取环境变量，可以为单独的文件路径或列表
+        env_file:
+            - ./.env
