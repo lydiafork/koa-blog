@@ -17,7 +17,7 @@ services:
     db:
         build: ./db
         ports:
-            - "3306:3305"
+            - "3306"
         # 从文件中获取环境变量，可以为单独的文件路径或列表
         env_file:
             - ./.env
