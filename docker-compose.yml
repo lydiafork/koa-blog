@@ -13,10 +13,11 @@ services:
             - "3000:3000"
         env_file:
             - ./.env
+        restart: always
     db:
         build: ./db
         ports:
-            - "3306:3306"
+            - "3306:3305"
         # 从文件中获取环境变量，可以为单独的文件路径或列表
         env_file:
             - ./.env
